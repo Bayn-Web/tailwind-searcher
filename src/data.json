@@ -536,14 +536,6 @@
         "value": "margin-left: 0px;"
     },
     {
-        "label": "space-x-0 > * + *",
-        "value": "margin-left: 0px;"
-    },
-    {
-        "label": "space-y-0 > * + *",
-        "value": "margin-top: 0px;"
-    },
-    {
         "label": "w-0",
         "value": "width: 0px;"
     },

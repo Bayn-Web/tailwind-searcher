@@ -24,7 +24,14 @@ import { ref } from 'vue';
 import SandBox from './components/SandBox.vue';
 import json from "./data.json"
 
-const optionsList = ref(json)
+let jsonwithkey = json.map((item) => {
+  return {
+    label: item.value,
+    value: item.label,
+    key: item.label
+  }
+})
+const optionsList = ref(jsonwithkey)
 const selectedKey = ref();
 const selectedValue = ref();
 const classNameList = ref<{ value: string, label: string, id: number }[]>([])

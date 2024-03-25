@@ -3,14 +3,16 @@
     <div class="space-x-3 flex justify-center">
       <a-select @change="keyChange" show-search :options="optionsList" :field-names="{ label: 'label', value: 'value' }"
         :filter-option="filterOption" v-model:value="selectedValue" class="w-[300px]" />
-      <a-select @change="valueChange" show-search :options="optionsList" :field-names="{ label: 'value', value: 'label' }"
-        :filter-option="filterOption" v-model:value="selectedKey" class="w-[300px]" />
+      <a-select @change="valueChange" show-search :options="optionsList"
+        :field-names="{ label: 'value', value: 'label' }" :filter-option="filterOption" v-model:value="selectedKey"
+        class="w-[300px]" />
       <a-button :disabled="selectedValue == undefined" @click="addClassName">→</a-button>
     </div>
-    <a-list bordered :grid="{ column: 6 }" size="small" :data-source="classNameList">
+    <a-list class="m-3" bordered :grid="{ column: 6 }" align="center" size="small" :data-source="classNameList">
       <template #renderItem="{ item }">
         <a-list-item class="w-fit p-2 m-2 space-x-4 ring rounded border" align="center">
-          <a-tag class="cursor-default" color="green">{{ item.label }}</a-tag>
+          <a-tag class="cursor-default" color="green">{{ item.label.length > 29 ? item.label.slice(0, 29) + "..." :
+        item.label }}</a-tag>
           <a-button danger rounded class="scale-150" type="link" @click="remove(item)">×</a-button>
         </a-list-item>
       </template>
@@ -52,7 +54,6 @@ const addClassName = () => {
 }
 
 const remove = (item: { label: string, value: string, id: number }) => {
-  let f = true
   classNameList.value = classNameList.value.filter((value) => {
     if (value.id !== item.id) {
       return true

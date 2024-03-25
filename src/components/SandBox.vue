@@ -19,7 +19,7 @@ const init = ''
 
 const formedClass = computed(() => {
   return parentProps.classNames.reduce((last, current) => {
-    return last + " " + current.label + " "
+    return last + " " + current.value + " "
   }, init)
 })
 </script>
